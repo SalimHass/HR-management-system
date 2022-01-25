@@ -5,7 +5,9 @@ function Employee(id, fullName, department, level) {
     this.fullName = fullName;
     this.department = department;
     this.level = level;
-    this.imagepath = `./imgs/${this.fullName}.png`
+    this.imagepath = `./imgs/${this.fullName}.png`;
+    this.salary = 0;
+    
 }
     
 
@@ -21,15 +23,29 @@ function Employee(id, fullName, department, level) {
     const hadiA = new Employee(1006, 'Hadi Ahmad', 'Finance', 'Mid-Senior');
 
 
-    Employee.prototype.salary = function () {
-        document.write(Employee)
-    };
-    Employee.netSalary(level) =function() {
-        if (level == 'Senior') {
-            this.netSalary = (Math.floor(Math.random() * (2000 - 1500)) + 1500) * .925;
-        } else if (level == 'Mid-Senior') {
-            this.netSalary = (Math.floor(Math.random() * (1500 - 1000)) + 1000) * .925;
-        } else if (level == 'Junior') {
-            this.netSalary = (Math.floor(Math.random() * (1000 - 500)) + 500) * .925;
-        }
+   Employee.prototype.rndSalary= function(){
+    if (this.level == 'Senior') {
+        this.salary = (Math.floor(Math.random() * (2000 - 1500)) + 1500);
+    } else if (this.level == 'Mid-Senior') {
+        this.salary= (Math.floor(Math.random() * (1500 - 1000)) + 1000) ;
+    } else if (this.level == 'Junior') {
+        this.salary = (Math.floor(Math.random() * (1000 - 500)) + 500) ;
     }
+   }
+   
+   Employee.prototype.netSalary =function() {
+    this.rndSalary()
+    return Math.floor(this.salary*.925)
+
+}
+Employee.prototype.render = function(){
+    document.write( `${this.fullName}  ${this.netSalary()}<br/>`);
+}
+
+gaziS.render();
+lanaA.render();
+tamaraA.render();
+safiW.render();
+omarZ.render();
+ranaS.render();
+hadiA.render();
