@@ -39,13 +39,26 @@ function Employee(id, fullName, department, level) {
 
 }
 Employee.prototype.render = function(){
-    document.write( `${this.fullName}  ${this.netSalary()}<br/>`);
+    var html = `            <div class="card">
+    <img class="employeeImage" src="./imgs/Ghazi.jpg" alt=""><br /><br />
+    <p class="eText">Name: ${this.fullName}- id: ${this.id}</p>
+    <p class="eText"> department: ${this.department} -  level: ${this.level}</p>
+    <p class="eText"> ${this.netSalary()} </p>
+</div>`
+    document.write(html);
 }
 
+let emArr= [gaziS,lanaA,tamaraA,safiW,omarZ,ranaS,hadiA]
 gaziS.render();
-lanaA.render();
-tamaraA.render();
-safiW.render();
-omarZ.render();
-ranaS.render();
-hadiA.render();
+
+
+let newEm = document.getElementById ("newEm");
+newEm.addEventListener("submit", addNewEm);
+function addNewEm (event){
+    event.preventDefault();
+    let fullName= event.target.eName.value;
+    let department=event.target.eDepSel.value;
+    let level=event.target.eLvlSel.value;
+    let imagepath= event.target.eImg.value;
+    let id = Math.floor(1000 + Math.random() * 9000);
+    }

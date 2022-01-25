@@ -6,6 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .card {
+            padding: 20px;
+            background-color: green;
+            width: 220px;
+            justify-content: center;
+            border-radius: 30px;
+
+        }
+
+        .employeeImage {
+            width: 200px;
+            height: 200px;
+
+
+        }
+        .eText {
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
@@ -16,14 +36,63 @@
         </nav>
     </header>
     <main>
+        <section id="form">
+            <form id="newEm">
+                <fieldset>
+                    <legend>Add new Emplyee</legend>
+                    <label for="eName">Name</label>
+                    <input type="text" name="eName" id="eName">
+                    <br>
+                    <br>
+                    <label for="eDep">Department </label>
+                    <select name="eDepSel" id="eDepSel">
+                        <option value="Administration" selected>Administration</option>
+                        <option value="Marketing" selected>Marketing</option>
+                        <option value="Development" selected>Development</option>
+                        <option value="Finance" selected>Finance</option>
+                    </select>
+                    <br>
+                    <br>
+                    <label for="eLvlSel">Select Level</label>
+                    <select name="eLvlSel" id="eLvlSel">
+                        <option value="Junior" selected>Junior</option>
+                        <option value="Mid-Senior" selected>Mid-Senior</option>
+                        <option value="Senior" selected>Senior</option>
+                    </select>
+                    <br>
+                    <br>
+                    <label for="eImg">URL Image</label>
+                    <input type="text" name="eImg" id="eImg">
+                    <br>
+                    <br>
+                    <input type="submit" value="Add New Emplyee">
+
+
+                </fieldset>
+            </form>
+        </section>
+        <section id="empImg">
+            <div class="card">
+                <img class="employeeImage" src="./imgs/Ghazi.jpg" alt=""><br /><br />
+                <p class="eText">Name: tramara - id: 0000</p>
+                <p class="eText"> asdasdasdasd</p>
+                <p class="eText"> salary </p>
+            </div>
+
+
+
+        </section>
+
+
+
         <script src="./js/app.js"></script>
     </main>
     <footer>
         <p>Copyright&copy; 2022</p>
-    <div>
-        <a href="https:\\facebook.com">Facebook</a>
-        <a href="https:\\Instagram.com">Instagram</a>
-    </div>
+        <div>
+            <a href="https:\\facebook.com">Facebook</a>
+            <a href="https:\\Instagram.com">Instagram</a>
+        </div>
     </footer>
 
 </body>
