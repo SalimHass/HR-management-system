@@ -9,6 +9,7 @@
     height: 100px;
 } */
 .card {
+    margin: 20px;
     padding: 20px;
     background-color: green;
     width: 250px;
@@ -20,7 +21,6 @@
 }
 
 .employeeImage {
-
     display: block;
     width: 200px;
     height: 200px;
@@ -34,6 +34,8 @@
     font-size: 90%;
 }
 .navBar{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     
     height: auto;
     width: auto;
