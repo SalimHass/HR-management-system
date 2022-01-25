@@ -33,3 +33,10 @@
     color: white;
     font-size: 90%;
 }
+.navBar{
+    
+    height: auto;
+    width: auto;
+    padding: 15px;
+    background-color: grey;
+}
