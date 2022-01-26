@@ -1,0 +1,62 @@
+.card {
+    margin: 20px;
+    padding: 20px;
+    background-color: green;
+    width: 250px;
+    justify-content: center;
+    border-radius: 30px;
+  }
+  
+  .employeeImage {
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .eText {
+    text-align: center;
+    color: white;
+    font-size: 90%;
+  }
+  .navBar {
+    display: flex;
+    height: auto;
+    padding: 15px;
+    background-color: #d9d7f1;
+  }
+  
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .footer {
+    background-color: #ffcbcb;
+    padding: 16px;
+    bottom: 0;
+    width: 100%;
+    
+  }
+  
+  .menuList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  .menuItem {
+      float: left;
+    }
+  
+  .menuLink {
+    display: block;
+    padding-right: 8px;
+  }
+  
+  body {
+    margin: 0%;
+  }
+  
