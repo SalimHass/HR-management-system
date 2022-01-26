@@ -7,8 +7,11 @@ function Employee(id, fullName, department, level, imgUrl) {
     this.level = level;
     this.imagepath = imgUrl;
     this.salary = 0;
+    Employee.allEmp.push(this);
 
 }
+let allEmp =[];
+Employee.allEmp = [];
 
 Employee.prototype.rndSalary = function () {
     if (this.level == 'Senior') {
@@ -27,24 +30,25 @@ Employee.prototype.netSalary = function () {
 }
 Employee.prototype.render = function () {
     let div = document.createElement('div');
-    div.setAttribute('class','card');
+    div.setAttribute('class', 'card');
     let image = document.createElement('img');
-    image.setAttribute('class','employeeImage');
+    image.setAttribute('class', 'employeeImage');
     div.appendChild(image);
-    image.setAttribute('src',this.imagepath)
+    image.setAttribute('src', this.imagepath)
     let namePar = document.createElement('p');
-    namePar.setAttribute('class','eText');
+    namePar.setAttribute('class', 'eText');
     div.appendChild(namePar);
     let deptPar = document.createElement('p');
-    deptPar.setAttribute('class','eText');
+    deptPar.setAttribute('class', 'eText');
     div.appendChild(deptPar);
     let salaryPar = document.createElement('p');
-    salaryPar.setAttribute('class','eText');
+    salaryPar.setAttribute('class', 'eText');
     div.appendChild(salaryPar)
     namePar.textContent = `Name: ${this.fullName}- id: ${this.id}`;
     deptPar.textContent = `Department: ${this.department} -  level: ${this.level}`;
     salaryPar.textContent = `${this.netSalary()}`;
     document.getElementById("empImg").appendChild(div);
+  
 }
 
 
@@ -85,3 +89,19 @@ function addNewEm(event) {
 }
 
 init();
+
+
+
+function settingEmp() {
+    let data = JSON.stringify(Employee.allEmp);
+    localStorage.setItem('id', data);
+}
+
+function gettingEmp() {
+    let empStrObj = localStorage.getItem('id');
+    let parsEmp = JSON.parse(empStrObj);
+    if (parsEmp !== null) {
+        Employee.allEmp = parsEmp
+    }
+}
+console.log(allEmp);
