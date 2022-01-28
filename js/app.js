@@ -1,16 +1,19 @@
 'use strict';
 
-function Employee(id, fullName, department, level, imgUrl) {
+function Employee(id, fullName, department, level, imgUrl, salary = null) {
     this.id = id;
     this.fullName = fullName;
     this.department = department;
     this.level = level;
     this.imagepath = imgUrl;
-    this.salary = 0;
-    Employee.allEmp.push(this);
-
+    if(salary==null){
+        this.rndSalary();
+    } else {
+        this.salary = salary;
+    }
+    
 }
-let allEmp =[];
+
 Employee.allEmp = [];
 
 Employee.prototype.rndSalary = function () {
@@ -24,7 +27,6 @@ Employee.prototype.rndSalary = function () {
 }
 
 Employee.prototype.netSalary = function () {
-    this.rndSalary()
     return Math.floor(this.salary * .925)
 
 }
@@ -48,33 +50,23 @@ Employee.prototype.render = function () {
     deptPar.textContent = `Department: ${this.department} -  level: ${this.level}`;
     salaryPar.textContent = `${this.netSalary()}`;
     document.getElementById("empImg").appendChild(div);
-  
+
 }
 
-
-
-const gaziS = new Employee(1000, 'Gazi Samer', 'Administration', 'Senior', './imgs/Ghazi.jpg');
-const lanaA = new Employee(1001, 'Lana Ali', 'Finance', 'Senior', './imgs/Lana.jpg');
-const tamaraA = new Employee(1002, 'Tamara Ayoub', 'Marketing', 'Senior', './imgs/Tamara.jpg');
-const safiW = new Employee(1003, 'Safi Walid', 'Administration', 'Mid-Senior', './imgs/Safi.jpg');
-const omarZ = new Employee(1004, 'Omar Zaid', 'Development', 'Senior', './imgs/Omar.jpg');
-const ranaS = new Employee(1005, 'Rana Saleh', 'Development', 'Junior', './imgs/Rana.jpg');
-const hadiA = new Employee(1006, 'Hadi Ahmad', 'Finance', 'Mid-Senior', './imgs/Hadi.jpg');
-var emArr = [gaziS, lanaA, tamaraA, safiW, omarZ, ranaS, hadiA]
-
 function showEmployees() {
-    for (let i = 0; i < emArr.length; i++) {
-        emArr[i].render();
+    for (let i = 0; i < Employee.allEmp.length; i++) {
+        Employee.allEmp[i].render();
     }
-
 }
 
 function init() {
+    loadEmployees();
     showEmployees();
-    let newEm = document.getElementById("newEm");
-    newEm.addEventListener("submit", addNewEm);
-}
+    let newEmForm = document.getElementById("newEm");
+    newEmForm.addEventListener("submit", addNewEm);
 
+}
+init();
 
 
 function addNewEm(event) {
@@ -85,23 +77,45 @@ function addNewEm(event) {
     let imagepath = event.target.eImg.value;
     let id = Math.floor(1000 + Math.random() * 9000);
     let employee = new Employee(id, fullName, department, level, imagepath)
+    saveEmployee(employee);
     employee.render();
 }
 
-init();
 
 
 
-function settingEmp() {
+
+function saveEmployee(emp) {
+    Employee.allEmp.push(emp)
     let data = JSON.stringify(Employee.allEmp);
-    localStorage.setItem('id', data);
+    localStorage.setItem('employees', data);
 }
 
-function gettingEmp() {
-    let empStrObj = localStorage.getItem('id');
-    let parsEmp = JSON.parse(empStrObj);
+function loadEmployees() {
+    let employees = localStorage.getItem('employees');
+    let parsEmp = JSON.parse(employees);
     if (parsEmp !== null) {
-        Employee.allEmp = parsEmp
+        parsEmp.forEach(element => {
+            let emp =new Employee(
+                element.id,
+                element.fullName,
+                element.department,
+                element.level,
+                element.imagepath,
+                element.salary);
+            Employee.allEmp.push(emp);
+        });
     }
 }
-console.log(allEmp);
+
+const gaziS = new Employee(1000, 'Gazi Samer', 'Administration', 'Senior', './imgs/Ghazi.jpg');
+const lanaA = new Employee(1001, 'Lana Ali', 'Finance', 'Senior', './imgs/Lana.jpg');
+const tamaraA = new Employee(1002, 'Tamara Ayoub', 'Marketing', 'Senior', './imgs/Tamara.jpg');
+const safiW = new Employee(1003, 'Safi Walid', 'Administration', 'Mid-Senior', './imgs/Safi.jpg');
+const omarZ = new Employee(1004, 'Omar Zaid', 'Development', 'Senior', './imgs/Omar.jpg');
+const ranaS = new Employee(1005, 'Rana Saleh', 'Development', 'Junior', './imgs/Rana.jpg');
+const hadiA = new Employee(1006, 'Hadi Ahmad', 'Finance', 'Mid-Senior', './imgs/Hadi.jpg');
+var oldEmp = [gaziS, lanaA, tamaraA, safiW, omarZ, ranaS, hadiA]
+oldEmp.forEach(emp => {
+    emp.render();
+});
