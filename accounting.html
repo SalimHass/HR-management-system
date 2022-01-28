@@ -6,24 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./css/Styles.css">
 </head>
 
 <body>
     <header>
-        <nav >
-            <a href="./index.html">Home</a>
-            <a href="./accounting.html">Accounting</a>
+        <nav class="navBar">
+            <ul class="menuList">
+                <li class="menuItem"><a class="menuLink" href="./index.html">Home</a></li>
+                <li class="menuItem"> <a class="menuLink" href="./accounting.html">Accounting</a></li>
+            </ul>
+
         </nav>
     </header>
     <main>
-
+        <section id="tableSec"></section>
+        
+        <script src="./js/accounting.js"></script>
     </main>
-    <footer>
+    <footer class="footer">
         <p>Copyright&copy; 2022</p>
-        <div>
-            <a href="https:\\facebook.com">Facebook</a>
-            <a href="https:\\Instagram.com">Instagram</a>
-        </div>
+        <ul class="menuList">
+            <li class="menuItem"> <a class="menuLink" href="https:\\facebook.com">Facebook</a></li>
+            <li class="menuItem"> <a class="menuLink" href="https:\\Instagram.com">Instagram</a></li>
+        </ul>
     </footer>
 </body>
 
